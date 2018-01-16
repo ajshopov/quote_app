@@ -1,0 +1,40 @@
+
+Feature List:
+
+User log in and log out
+Search bar for total database
+Profile page with own quotes
+Ability to edit and remove own quotes
+Favourite/add to your list
+
+
+Optional:
+Sort by category
+Sort by author
+Send/share quotes with other users
+
+
+List of files:
+
+  /models
+  user.rb (id, username, email, password_digest)
+  quote.rb (id, quote_text, author, user_id)
+  favourite.rb (id, quote_id, user_id)
+
+  *share.rb (id, quote_id, from_user, to_user)
+
+  /stylesheets
+  main.css
+
+  /views
+  layout.erb
+  index. (home page)
+  results.erb (has search results from db)
+  profile.erb (list of favourited content)
+  edit.erb (edit and delete content)
+
+  /
+  app_console.rb
+  db_config.rb
+
+
