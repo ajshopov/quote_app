@@ -1,0 +1,19 @@
+<h2>Your quotelist</h2>
+
+<table class="table">
+  
+<tr>
+  <th scope="col">Category</th>
+  <th scope="col">Author</th>
+  <th scope="col">Quote</th>
+</tr>
+<tr>
+  
+<% @result.each do |quote|%>
+  <tr>
+    <td><%= quote['category']%></td>
+    <td><%= quote['author']%></td>
+    <td><%= quote['content']%></td>
+  </tr>
+<%end%>
+</table>

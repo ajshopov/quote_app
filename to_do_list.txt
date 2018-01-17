@@ -12,13 +12,14 @@ Optional:
 Sort by category
 Sort by author
 Send/share quotes with other users
+create notification of successful user creation, auto login upon signup
 
 
 List of files:
 
   /models
   user.rb (id, username, email, password_digest)
-  quote.rb (id, quote_text, author, user_id)
+  quote.rb (id, quote_text, author,category, user_id)
   favourite.rb (id, quote_id, user_id)
 
   *share.rb (id, quote_id, from_user, to_user)
@@ -30,7 +31,9 @@ List of files:
   layout.erb
   index. (home page)
   results.erb (has search results from db)
+  login.erb (sign in and log in page)
   profile.erb (list of favourited content)
+  new.erb (add new quote)
   edit.erb (edit and delete content)
 
   /
