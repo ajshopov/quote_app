@@ -1,18 +1,24 @@
 
 Feature List:
 
-User log in and log out
-Search bar for total database
-Profile page with own quotes
-Ability to edit and remove own quotes
+DONE- User log in and log out
+DONE- Search bar for total database
+DONE- Profile page with own quotes
+DONE- Ability to edit and remove own quotes
+
+TO DO:
 Favourite/add to your list
+Layout erb design
+Organise site flow
 
 
 Optional:
 Sort by category
+change category to tags - many-to-many
 Sort by author
 Send/share quotes with other users
 create notification of successful user creation, auto login upon signup
+comments?
 
 
 List of files:

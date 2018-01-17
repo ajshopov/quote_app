@@ -9,9 +9,14 @@
 </head>
 <body>
 <% if logged_in? %>
-logged in as <%= current_user.username %>
+<p>logged in as <%= current_user.username %>
 <% end %>
-
+</p>
+<p>Search quotes:</p>
+<form action="/results" method="get">
+  <input name="search" type="text">
+  <button>search</button>
+</form>
   <%= yield %>
 
 </body>

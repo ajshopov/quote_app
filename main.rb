@@ -18,11 +18,24 @@ helpers do
   end
 end
 
+#  home
 get '/' do
   @quotes = Quote.all.order(:id)
   erb :index
 end
 
+#  profile
+get '/profile' do
+  conn = PG.connect(dbname: 'quote_app')
+  sql = "select * FROM quotes WHERE user_id = '#{current_user.id}';"
+  @result = conn.exec(sql)
+  # binding.pry
+  conn.close
+  erb :profile
+end
+
+
+# creating, editing, deleting quotes~~~~~~
 # new quote page
 get '/quote/new' do
   erb :new
@@ -40,7 +53,6 @@ get '/results' do
   erb :results
 end
 
-
 # create new quote
 post '/quote' do
   quote = Quote.new
@@ -53,18 +65,30 @@ post '/quote' do
   redirect '/'
 end
 
-#  profile quotelist
-get '/profile' do
-  conn = PG.connect(dbname: 'quote_app')
-  sql = "select category, author, content FROM quotes WHERE user_id = '#{current_user.id}';"
-  @result = conn.exec(sql)
-  # binding.pry
-  conn.close
-  erb :profile
+get '/quote/:id/edit' do
+  # edit page
+  @quote = Quote.find(params[:id])
+  erb :edit
 end
 
+put '/quote/:id' do
+  # editing quote
+  quote = Quote.find(params[:id])
+  quote.author = params[:author]
+  quote.category = params[:category]
+  quote.content = params[:content]
+  quote.save
+  redirect "/quote/#{params[:id]}/edit"
+end
 
-# login routes ~~~~~~
+delete '/quote/:id' do
+  #  delete dish
+  quote = Quote.find(params[:id])
+  quote.delete
+  redirect '/profile'
+end
+
+# login routes ~~~~~~~~~~~~~
 get '/login' do
   erb :login
 end

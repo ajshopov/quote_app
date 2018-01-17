@@ -6,6 +6,7 @@
   <th scope="col">Category</th>
   <th scope="col">Author</th>
   <th scope="col">Quote</th>
+  <th scope="col">Edit/Delete</th>
 </tr>
 <tr>
   
@@ -14,6 +15,7 @@
     <td><%= quote['category']%></td>
     <td><%= quote['author']%></td>
     <td><%= quote['content']%></td>
+    <td><a href="quote/<%= quote['id']%>/edit">edit</a></td>
   </tr>
 <%end%>
 </table>
