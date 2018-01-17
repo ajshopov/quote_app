@@ -18,6 +18,11 @@ CREATE TABLE quotes (
 
 
 CREATE TABLE favourites (
+  id SERIAL PRIMARY KEY,
+  quote_id integer NOT NULL,
+  user_id integer NOT NULL,
+  FOREIGN KEY (quote_id) REFERENCES quotes (id) ON DELETE RESTRICT,
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE RESTRICT
 );
 
 -- CREATE TABLE shares (

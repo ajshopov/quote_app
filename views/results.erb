@@ -5,7 +5,7 @@
 <table class="table">
   
 <tr>
-  <!-- <th scope="col">User</th> -->
+  <th scope="col">User</th>
   <th scope="col">Category</th>
   <th scope="col">Author</th>
   <th scope="col">Quote</th>
@@ -15,10 +15,19 @@
   
 <% @result.each do |quote|%>
   <tr>
-    <!-- <td><%= quote.user_id %></td> -->
+    <td><%= quote.user.username %></td>
     <td><%= quote.category %></td>
     <td><%= quote.author %></td>
     <td><%= quote.content %></td>
-  </tr>
+    <td>
+      <% if quote.user_id != current_user.id %>
+
+          <form action="/favourite/<%= quote.id %>" method="post">
+            <input type="hidden" name="_method" value="post">
+            <button>add to FAV</button>
+          </form>
+      <% end %>
+    </td>
 <%end%>
+  </tr>
 </table>

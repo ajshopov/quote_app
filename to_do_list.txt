@@ -7,14 +7,16 @@ DONE- Profile page with own quotes
 DONE- Ability to edit and remove own quotes
 
 TO DO:
-Favourite/add to your list
+DONE- Favourite/add to your list
+Show favs in profile
 Layout erb design
 Organise site flow
 larger quote edit box
+Admin user can edit all?
 
 Issues:
 Registration successful, then login
-Uploaded by username not id!
+DONE- Uploaded by username not id!
 Case sensitivity in search
 
 
@@ -22,9 +24,12 @@ Optional:
 Sort by category
 change category to tags - many-to-many
 Sort by author
+Change profile data from pg to sql
 Send/share quotes with other users
 create notification of successful user creation, auto login upon signup
 comments?
+search icon inside main search bar
+
 
 
 List of files:

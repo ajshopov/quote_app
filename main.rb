@@ -5,6 +5,7 @@ require 'pg'
 require_relative 'db_config'
 require_relative 'models/user'
 require_relative 'models/quote'
+require_relative 'models/favourite'
 
 enable :sessions
 
@@ -24,15 +25,21 @@ get '/' do
   erb :index
 end
 
+get '/about' do
+  erb :about
+end
+
+
 #  profile
 get '/profile' do
   redirect '/login' unless logged_in?
   conn = PG.connect(dbname: 'quote_app')
-  sql = "select id, user_id, category, author, content FROM quotes WHERE user_id = '#{current_user.id}';"
-  @result = conn.exec(sql)
-  # binding.pry
+  sql_uploaded = "select id, user_id, category, author, content FROM quotes WHERE user_id = '#{current_user.id}';"
+  @result = conn.exec(sql_uploaded)
   conn.close
 
+  @favourites = Favourite.where(user_id: current_user.id)
+  binding.pry
   erb :profile
 end
 
@@ -46,12 +53,14 @@ end
 # search quotes
 get '/results' do
   @search = params[:search]
+  # @result = Quote.joins(:users)
   @result = Quote.where("content like ?", "%#{@search}%").or(Quote.where("author like ?", "%#{@search}%"))
+  
   # conn = PG.connect(dbname: 'quote_app')
   # sql = "select * FROM quotes WHERE content LIKE '%#{@search}%' OR author LIKE '%#{@search}%';"
   # # sql = "insert into dishes(name, image_url) values ('#{params[:name]}','#{params[:image_url]}');"
   # @result = conn.exec(sql)
-  # # binding.pry
+   # binding.pry
   # conn.close
   erb :results
 end
@@ -85,9 +94,19 @@ put '/quote/:id' do
 end
 
 delete '/quote/:id' do
-  #  delete dish
+  #  delete quote
   quote = Quote.find(params[:id])
   quote.delete
+  redirect '/profile'
+end
+
+#add to favourites
+post '/favourite/:id' do
+  favourite = Favourite.new
+  favourite.quote_id = Quote.find(params[:id]).id
+  favourite.user_id = current_user.id
+  # binding.pry
+  favourite.save
   redirect '/profile'
 end
 
@@ -118,9 +137,5 @@ end
 delete '/session' do
   session[:user_id] = nil
   redirect '/'
-end
-
-get '/about' do
-  erb :about
 end
 
