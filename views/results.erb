@@ -5,17 +5,20 @@
 <table class="table">
   
 <tr>
+  <!-- <th scope="col">User</th> -->
   <th scope="col">Category</th>
   <th scope="col">Author</th>
   <th scope="col">Quote</th>
+  <th scope="col">Add to Fav</th>
 </tr>
 <tr>
   
 <% @result.each do |quote|%>
   <tr>
-    <td><%= quote['category']%></td>
-    <td><%= quote['author']%></td>
-    <td><%= quote['content']%></td>
+    <!-- <td><%= quote.user_id %></td> -->
+    <td><%= quote.category %></td>
+    <td><%= quote.author %></td>
+    <td><%= quote.content %></td>
   </tr>
 <%end%>
 </table>

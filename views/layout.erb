@@ -8,16 +8,43 @@
   <link rel='stylesheet' href='/stylesheets/main.css'>
 </head>
 <body>
-<% if logged_in? %>
-<p>logged in as <%= current_user.username %>
-<% end %>
-</p>
-<p>Search quotes:</p>
-<form action="/results" method="get">
-  <input name="search" type="text">
-  <button>search</button>
-</form>
-  <%= yield %>
+  <main>
+    <header>
+      <nav class="nav nav-pills justify-content-center">
+        <a class="nav-item nav-link" href="/">Home</a>
+        <a class="nav-item nav-link" href="/profile">Profile</a>
+        <a class="nav-item nav-link" href="/about">About</a>
+      </nav>
 
+        <% if logged_in? %>
+          logged in as <%= current_user.username %>
+          <form action="/session" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button>logout</button>
+          </form>
+        <% else %>
+          <form action="/login">
+            <input type="hidden" name="_method">
+            <button>login/signup</button>
+          </form>
+        <% end %>
+
+        <h1>QuoteShare</h1>
+      <div class="search-form">
+        <form action="/results" method="get">
+          <label for="">Search:</label>
+          <input name="search" type="text" placeholder="text or author...">
+          <button>search</button>
+        </form>
+      </div>
+    </header>
+
+    <%= yield %>
+    
+  </main>
 </body>
 </html>
+
+
+
+

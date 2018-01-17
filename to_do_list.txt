@@ -10,6 +10,12 @@ TO DO:
 Favourite/add to your list
 Layout erb design
 Organise site flow
+larger quote edit box
+
+Issues:
+Registration successful, then login
+Uploaded by username not id!
+Case sensitivity in search
 
 
 Optional:

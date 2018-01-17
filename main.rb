@@ -26,11 +26,13 @@ end
 
 #  profile
 get '/profile' do
+  redirect '/login' unless logged_in?
   conn = PG.connect(dbname: 'quote_app')
-  sql = "select * FROM quotes WHERE user_id = '#{current_user.id}';"
+  sql = "select id, user_id, category, author, content FROM quotes WHERE user_id = '#{current_user.id}';"
   @result = conn.exec(sql)
   # binding.pry
   conn.close
+
   erb :profile
 end
 
@@ -43,13 +45,14 @@ end
 
 # search quotes
 get '/results' do
-  search = params[:search]
-  conn = PG.connect(dbname: 'quote_app')
-  sql = "select category, author, content FROM quotes WHERE content LIKE '%#{search}%' OR author like '%#{search}%';"
-  # sql = "insert into dishes(name, image_url) values ('#{params[:name]}','#{params[:image_url]}');"
-  @result = conn.exec(sql)
-  # binding.pry
-  conn.close
+  @search = params[:search]
+  @result = Quote.where("content like ?", "%#{@search}%").or(Quote.where("author like ?", "%#{@search}%"))
+  # conn = PG.connect(dbname: 'quote_app')
+  # sql = "select * FROM quotes WHERE content LIKE '%#{@search}%' OR author LIKE '%#{@search}%';"
+  # # sql = "insert into dishes(name, image_url) values ('#{params[:name]}','#{params[:image_url]}');"
+  # @result = conn.exec(sql)
+  # # binding.pry
+  # conn.close
   erb :results
 end
 
@@ -117,5 +120,7 @@ delete '/session' do
   redirect '/'
 end
 
-
+get '/about' do
+  erb :about
+end
 
