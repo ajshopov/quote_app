@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 require 'pry'
 require 'pg'
 require_relative 'db_config'
@@ -33,6 +33,9 @@ end
 #  profile
 get '/profile' do
   redirect '/login' unless logged_in?
+
+  # @result = Quote.where(user_id: current_user.id)
+
   conn = PG.connect(dbname: 'quote_app')
   sql_uploaded = "select id, user_id, category, author, content FROM quotes WHERE user_id = '#{current_user.id}';"
   @result = conn.exec(sql_uploaded)
@@ -47,6 +50,7 @@ end
 # creating, editing, deleting quotes~~~~~~
 # new quote page
 get '/quote/new' do
+  redirect '/login' unless logged_in?
   erb :new
 end
 
@@ -55,13 +59,11 @@ get '/results' do
   @search = params[:search]
   # @result = Quote.joins(:users)
   @result = Quote.where("content like ?", "%#{@search}%").or(Quote.where("author like ?", "%#{@search}%"))
+  if logged_in?
   @user_favs = Favourite.where(user_id: current_user.id)
-  # conn = PG.connect(dbname: 'quote_app')
-  # sql = "select * FROM quotes WHERE content LIKE '%#{@search}%' OR author LIKE '%#{@search}%';"
-  # # sql = "insert into dishes(name, image_url) values ('#{params[:name]}','#{params[:image_url]}');"
-  # @result = conn.exec(sql)
+  end
+
    # binding.pry
-  # conn.close
   erb :results
 end
 
@@ -103,6 +105,7 @@ end
 # adding to and removing from favourites
 #add to favourites
 post '/favourite/:id' do
+  redirect '/login' unless logged_in?
   favourite = Favourite.new
   favourite.quote_id = Quote.find(params[:id]).id
   favourite.user_id = current_user.id

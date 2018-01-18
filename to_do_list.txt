@@ -5,25 +5,27 @@ DONE- User log in and log out
 DONE- Search bar for total database
 DONE- Profile page with own quotes
 DONE- Ability to edit and remove own quotes
-
-TO DO:
 DONE- Favourite/add to your list
 DONE- Show favs in profile
 DONE- unfav button
 DONE- Layout erb design
+
+TO DO:
 Organise site flow
 larger quote edit box
-Admin user can edit all?
+favourites count
+Case sensitivity in search (Product.where("lower(name) = ?", name.downcase))
+
 
 Issues:
 DONE- Registration successful, then login
 DONE- Uploaded by username not id!
-Case sensitivity in search
 DONE- fav button doesn't disappear when added
-crashes on search results when not logged in
+DONE- crashes on search results when not logged in
 
 
 Optional:
+Admin user can edit all
 Sort by category
 change category to tags - many-to-many
 Sort by author
