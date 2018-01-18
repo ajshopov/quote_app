@@ -14,7 +14,9 @@ TO DO:
 Organise site flow
 larger quote edit box
 favourites count
+Favourite.all.count{ |x| x.quote_id == 9 }
 Case sensitivity in search (Product.where("lower(name) = ?", name.downcase))
+Change profile data from pg to sql
 
 
 Issues:
@@ -22,18 +24,18 @@ DONE- Registration successful, then login
 DONE- Uploaded by username not id!
 DONE- fav button doesn't disappear when added
 DONE- crashes on search results when not logged in
+DONE- create notification of successful user creation
 
 
 Optional:
-Admin user can edit all
-Sort by category
-change category to tags - many-to-many
-Sort by author
-Change profile data from pg to sql
-Send/share quotes with other users
-create notification of successful user creation, auto login upon signup
-comments?
 search icon inside main search bar
+Admin user can edit all
+Sort by author
+Sort by category (Quote.order(:category))
+Send/share quotes with other users
+auto login upon signup
+change category to tags - many-to-many
+comments?
 
 
 
@@ -63,3 +65,6 @@ List of files:
   db_config.rb
 
 
+
+
+pg_dump -Fc --no-acl --no-owner -h localhost -U ajshopov quote_app > db.dump

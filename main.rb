@@ -22,6 +22,13 @@ end
 #  home
 get '/' do
   @quotes = Quote.all.order(:id)
+
+  # favourites count
+  # counts = Hash.new 0
+  # @top_quotes.each do |data|
+  #   counts[data.quote_id] += 1
+  # end
+  # @top_quotes = Favourite.all.count{ |x| x.quote_id }
   erb :index
 end
 

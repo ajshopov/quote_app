@@ -2,6 +2,6 @@ source 'https://rubygems.org'
 
 gem 'activerecord'
 gem 'sinatra'
-gem 'pg'
+gem 'pg', '0.21.0'
 gem 'pry'
 gem 'bcrypt'
