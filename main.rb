@@ -25,21 +25,19 @@ get '/' do
 
   # favourites count
   top_quotes = Favourite.all
-
-
   count = Hash.new 0
   top_quotes.each do |favourite|
      count[favourite.quote_id] += 1
   end
   # ^^ gives {13 => 2, 9 => 1, etc}
   @favs_array = count.sort_by{|k,v| v}
-
   # binding.pry
+
   @pos1 = Quote.find(@favs_array[-1][0])
   @pos2 = Quote.find(@favs_array[-2][0])
-  # @pos3 = Quote.find(@favs_array[-3][0])
-  # @pos4 = Quote.find(@favs_array[-4][0])
-  # @pos5 = Quote.find(@favs_array[-5][0])
+  @pos3 = Quote.find(@favs_array[-3][0])
+  @pos4 = Quote.find(@favs_array[-4][0])
+  @pos5 = Quote.find(@favs_array[-5][0])
   erb :index
 end
 
@@ -75,7 +73,7 @@ end
 # search quotes
 get '/results' do
   @search = params[:search]
-  @result = Quote.where("content ilike ?", "%#{@search}%").or(Quote.where("author ilike ?", "%#{@search}%"))
+  @result = Quote.where("content ilike ?", "%#{@search}%").or(Quote.where("author ilike ?", "%#{@search}%").or(Quote.where("category ilike ?", "%#{@search}%")))
   if logged_in?
   @user_favs = Favourite.where(user_id: current_user.id)
   end

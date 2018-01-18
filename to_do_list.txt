@@ -16,6 +16,7 @@ larger quote edit box
 DONE- favourites count
 DONE- Case sensitivity in search - ilke
 DONE- Change profile data from pg to sql
+Admin user can edit all
 
 
 Issues:
@@ -25,13 +26,20 @@ DONE- fav button doesn't disappear when added
 DONE- crashes on search results when not logged in
 DONE- create notification of successful user creation
 
+FINAL FIXES
+DONE- favicon
+D- search to include category
+widen and space main search box
+new/edit quote larger content box
+DONE- hello world header
+rework homepage, top quotes at top
 
 Optional:
 search icon inside main search bar
-Admin user can edit all
 Sort by author
 Sort by category (Quote.order(:category))
 Send/share quotes with other users
+failed to login error
 auto login upon signup
 change category to tags - many-to-many
 comments?

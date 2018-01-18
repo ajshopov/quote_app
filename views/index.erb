@@ -1,30 +1,39 @@
-All quotes... (debug)
-
-<% @quotes.each do |item| %>
-    <p><%= item['category']%>
-    <%= item['author']%>
-    <%= item['content']%></p>
-<% end %>
-
 <table class="table">
   <caption>TOP 5 QUOTES</caption>
-<tr>
-  <th scope="col">Category</th>
-  <th scope="col">Author</th>
-  <th scope="col">Quote</th>
-  <th scope="col">Votes</th>
-</tr>
-<tr>
-  <td><%= @pos1.category %></td>
-  <td><%= @pos1.author %></td>
-  <td><%= @pos1.content %></td>
-  <td><%= @favs_array[-1][1] %></td>
-</tr>
-<tr>
-  <td><%= @pos2.category %></td>
-  <td><%= @pos2.author %></td>
-  <td><%= @pos2.content %></td>
-  <td><%= @favs_array[-2][1] %></td>
-</tr>
+  <tr>
+    <th scope="col">Category</th>
+    <th scope="col">Author</th>
+    <th scope="col">Quote</th>
+    <th scope="col">Votes</th>
+  </tr>
+  <tr>
+    <td><%= @pos1.category %></td>
+    <td><%= @pos1.author %></td>
+    <td><%= @pos1.content %></td>
+    <td><%= @favs_array[-1][1] %></td>
+  </tr>
+  <tr>
+    <td><%= @pos2.category %></td>
+    <td><%= @pos2.author %></td>
+    <td><%= @pos2.content %></td>
+    <td><%= @favs_array[-2][1] %></td>
+  </tr>
+  <tr>
+    <td><%= @pos3.category %></td>
+    <td><%= @pos3.author %></td>
+    <td><%= @pos3.content %></td>
+    <td><%= @favs_array[-3][1] %></td>
+  </tr>
+  <tr>
+    <td><%= @pos4.category %></td>
+    <td><%= @pos4.author %></td>
+    <td><%= @pos4.content %></td>
+    <td><%= @favs_array[-4][1] %></td>
+  </tr>
+  <tr>
+    <td><%= @pos5.category %></td>
+    <td><%= @pos5.author %></td>
+    <td><%= @pos5.content %></td>
+    <td><%= @favs_array[-5][1] %></td>
+  </tr>
 </table>
-
