@@ -1,0 +1,2 @@
+
+heroku pg:backups:restore 'https://github.com/ajshopov/quote_app/raw/master/db.dump' DATABASE_URL

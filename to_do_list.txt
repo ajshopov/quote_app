@@ -15,8 +15,8 @@ Organise site flow
 larger quote edit box
 favourites count
 Favourite.all.count{ |x| x.quote_id == 9 }
-Case sensitivity in search (Product.where("lower(name) = ?", name.downcase))
-Change profile data from pg to sql
+DONE- Case sensitivity in search - ilke
+DONE- Change profile data from pg to sql
 
 
 Issues:
