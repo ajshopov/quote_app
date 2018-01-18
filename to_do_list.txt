@@ -13,8 +13,7 @@ DONE- Layout erb design
 TO DO:
 Organise site flow
 larger quote edit box
-favourites count
-Favourite.all.count{ |x| x.quote_id == 9 }
+DONE- favourites count
 DONE- Case sensitivity in search - ilke
 DONE- Change profile data from pg to sql
 
@@ -36,7 +35,6 @@ Send/share quotes with other users
 auto login upon signup
 change category to tags - many-to-many
 comments?
-
 
 
 List of files:
