@@ -35,8 +35,8 @@ get '/' do
   @favs_array = count.sort_by{|k,v| v}
 
   # binding.pry
-  # @pos1 = Quote.find(@favs_array[-1][0])
-  # @pos2 = Quote.find(@favs_array[-2][0])
+  @pos1 = Quote.find(@favs_array[-1][0])
+  @pos2 = Quote.find(@favs_array[-2][0])
   # @pos3 = Quote.find(@favs_array[-3][0])
   # @pos4 = Quote.find(@favs_array[-4][0])
   # @pos5 = Quote.find(@favs_array[-5][0])
