@@ -34,3 +34,17 @@ caption {
   text-align: center;
   margin-bottom: 30px;
 }
+
+#main-search {
+  width: 400px;
+  border: 2px solid black;
+  padding: 3px;
+}
+
+#main-search-button {
+  padding: 4px;
+}
+
+#new-quote, #edit-quote {
+  width: 500px;
+}

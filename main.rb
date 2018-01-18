@@ -1,5 +1,5 @@
 require 'sinatra'
-# require 'sinatra/reloader'
+require 'sinatra/reloader'
 require 'pry'
 # require 'pg'
 require_relative 'db_config'
@@ -77,7 +77,6 @@ get '/results' do
   if logged_in?
   @user_favs = Favourite.where(user_id: current_user.id)
   end
-
    # binding.pry
   erb :results
 end
@@ -91,7 +90,7 @@ post '/quote' do
   quote.category = params[:category]
   quote.content = params[:content]
   quote.save
-  redirect '/'
+  redirect '/profile'
 end
 
 get '/quote/:id/edit' do
@@ -157,7 +156,7 @@ post '/session' do
   user = User.find_by(email: params[:email])
   if user && user.authenticate(params[:password])
     session[:user_id] = user.id
-    redirect '/'
+    redirect '/profile'
   else
     erb :login
   end

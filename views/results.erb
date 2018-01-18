@@ -9,7 +9,7 @@
   <th scope="col">Category</th>
   <th scope="col">Author</th>
   <th scope="col">Quote</th>
-  <th scope="col">Add to Fav</th>
+  <th scope="col">Upvote</th>
 </tr>
 <tr>
   
@@ -28,10 +28,8 @@
         <% if @user_favs.where(quote_id: quote.id).empty? %>
             <form action="/favourite/<%= quote.id %>" method="post">
               <input type="hidden" name="_method" value="post">
-              <button>add to FAV</button>
+              <button>upvote</button>
             </form>
-        <% else %>
-          unfav button
         <% end %>
       <% end %>
     <% end %>

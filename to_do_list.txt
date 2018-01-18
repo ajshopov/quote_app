@@ -11,12 +11,11 @@ DONE- unfav button
 DONE- Layout erb design
 
 TO DO:
-Organise site flow
-larger quote edit box
+DONE- Organise site flow
 DONE- favourites count
 DONE- Case sensitivity in search - ilke
 DONE- Change profile data from pg to sql
-Admin user can edit all
+
 
 
 Issues:
@@ -28,11 +27,15 @@ DONE- create notification of successful user creation
 
 FINAL FIXES
 DONE- favicon
-D- search to include category
-widen and space main search box
-new/edit quote larger content box
+DONE- search to include category
+DONE- widen and space main search box
+DONE- new/edit quote wider content box (textarea didn't input content)
 DONE- hello world header
-rework homepage, top quotes at top
+DONE- rework homepage, top quotes at top
+update readme
+Admin user can edit all
+
+DIFFICULTY- a remove button for search results
 
 Optional:
 search icon inside main search bar

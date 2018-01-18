@@ -6,7 +6,7 @@
   <th scope="col">Category</th>
   <th scope="col">Author</th>
   <th scope="col">Quote</th>
-  <th scope="col">DELETE</th>
+  <th scope="col">Delete</th>
 </tr>
 <tr>
   <td><%= @quote['category']%></td> 
@@ -15,18 +15,15 @@
   <td>
   <form action="/quote/<%= @quote['id'] %>" method="post">
     <input type="hidden" name="_method" value="delete">
-    <button>DEL</button>
+    <button>del</button>
   </form>
   </td>
 </tr>
 
 <form action="/quote/<%= @quote['id'] %>" method="post">
   <input type="hidden" name="_method" value="put">
-
   <input name="category" type="text" value="<%= @quote['category'] %>">
-  
   <input name="author" type="text" value="<%= @quote['author'] %>">
-
-  <input name="content" type="text" value="<%= @quote['content'] %>">
+  <input name="content" id="edit-quote" type="text" value="<%= @quote['content'] %>">
   <button>update</button>
 </form>
