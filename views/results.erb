@@ -20,12 +20,17 @@
     <td><%= quote.author %></td>
     <td><%= quote.content %></td>
     <td>
+      <!-- if user id is same as quote.user_id ie uploaded by that person, then no fav option -->
+      <!-- if already fav'd, so fav.quote_id and user_id already exists in db -->
       <% if quote.user_id != current_user.id %>
-
-          <form action="/favourite/<%= quote.id %>" method="post">
-            <input type="hidden" name="_method" value="post">
-            <button>add to FAV</button>
-          </form>
+        <% if @user_favs.where(quote_id: quote.id).empty? %>
+            <form action="/favourite/<%= quote.id %>" method="post">
+              <input type="hidden" name="_method" value="post">
+              <button>add to FAV</button>
+            </form>
+        <% else %>
+          already fav
+        <% end %>
       <% end %>
     </td>
 <%end%>

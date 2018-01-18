@@ -1,10 +1,13 @@
 body{
-
+  background: rgba(109, 143, 255, 0.1);
+  /*background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/1c/Quotation_Marks.svg");
+  background-repeat: repeat;*/
 }
+
 
 main {
   width: 1000px;
-  border: solid 1px black;
+  border: solid 3px black;
   margin: 0 auto;
 }
 
@@ -23,8 +26,8 @@ h2 {
   margin-top: 15px;
 }
 
-body{
-  background: rgba(109, 143, 255, 0.1);
+caption {
+  caption-side: top;
 }
 
 .search-form {

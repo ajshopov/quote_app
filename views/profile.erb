@@ -1,21 +1,38 @@
 <h2>Your quotelist</h2>
 
-<p>Favourites:</p>
-<table class="table">
-  
-<p>to insert table</p>
 
-
-<p>Uploaded by you:</p>
 <table class="table">
-  
+  <caption>Favourites:</caption>
+<tr>
+  <th scope="col">Category</th>
+  <th scope="col">Author</th>
+  <th scope="col">Quote</th>
+  <th scope="col">Submitted by</th>
+  <th scope="col">unfav</th>
+</tr>
+<tr>
+  <% @fav.each do |favourite|%>
+  <td><%= favourite.quote.category %></td>
+  <td><%= favourite.quote.author %></td>
+  <td><%= favourite.quote.content %></td>
+  <td><%= favourite.quote.user.username %></td>
+  <td>
+  <form action="/favourite/<%= favourite['id'] %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>unfav</button>
+  </form>
+  </td>
+</tr>
+  <%end%>
+
+<table class="table">
+  <caption>Uploaded by you:</caption>
 <tr>
   <th scope="col">Category</th>
   <th scope="col">Author</th>
   <th scope="col">Quote</th>
   <th scope="col">Edit/Delete</th>
 </tr>
-<tr>
   
 <% @result.each do |quote|%>
   <tr>

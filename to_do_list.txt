@@ -8,16 +8,19 @@ DONE- Ability to edit and remove own quotes
 
 TO DO:
 DONE- Favourite/add to your list
-Show favs in profile
-Layout erb design
+DONE- Show favs in profile
+DONE- unfav button
+DONE- Layout erb design
 Organise site flow
 larger quote edit box
 Admin user can edit all?
 
 Issues:
-Registration successful, then login
+DONE- Registration successful, then login
 DONE- Uploaded by username not id!
 Case sensitivity in search
+DONE- fav button doesn't disappear when added
+crashes on search results when not logged in
 
 
 Optional:

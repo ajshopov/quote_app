@@ -38,8 +38,8 @@ get '/profile' do
   @result = conn.exec(sql_uploaded)
   conn.close
 
-  @favourites = Favourite.where(user_id: current_user.id)
-  binding.pry
+  @fav = Favourite.where(user_id: current_user.id)
+  # binding.pry
   erb :profile
 end
 
@@ -55,7 +55,7 @@ get '/results' do
   @search = params[:search]
   # @result = Quote.joins(:users)
   @result = Quote.where("content like ?", "%#{@search}%").or(Quote.where("author like ?", "%#{@search}%"))
-  
+  @user_favs = Favourite.where(user_id: current_user.id)
   # conn = PG.connect(dbname: 'quote_app')
   # sql = "select * FROM quotes WHERE content LIKE '%#{@search}%' OR author LIKE '%#{@search}%';"
   # # sql = "insert into dishes(name, image_url) values ('#{params[:name]}','#{params[:image_url]}');"
@@ -100,6 +100,7 @@ delete '/quote/:id' do
   redirect '/profile'
 end
 
+# adding to and removing from favourites
 #add to favourites
 post '/favourite/:id' do
   favourite = Favourite.new
@@ -107,6 +108,12 @@ post '/favourite/:id' do
   favourite.user_id = current_user.id
   # binding.pry
   favourite.save
+  redirect back
+end
+
+delete '/favourite/:id' do
+  favourite = Favourite.find(params[:id])
+  favourite.delete
   redirect '/profile'
 end
 
@@ -121,7 +128,11 @@ post '/newuser' do
   user.email = params[:email]
   user.password = params[:password]
   user.save
-  redirect '/login'
+  redirect '/register'
+end
+
+get '/register' do
+  erb :register
 end
 
 post '/session' do
