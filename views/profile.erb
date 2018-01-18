@@ -36,10 +36,10 @@
   
 <% @result.each do |quote|%>
   <tr>
-    <td><%= quote['category'] %></td>
-    <td><%= quote['author']%></td>
-    <td><%= quote['content']%></td>
-    <td><a href="quote/<%= quote['id'] %>/edit">edit</a></td>
+    <td><%= quote.category %></td>
+    <td><%= quote.author %></td>
+    <td><%= quote.content %></td>
+    <td><a href="quote/<%= quote.id %>/edit">edit</a></td>
   </tr>
 <%end%>
 </table>

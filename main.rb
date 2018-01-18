@@ -1,7 +1,7 @@
 require 'sinatra'
 # require 'sinatra/reloader'
 require 'pry'
-require 'pg'
+# require 'pg'
 require_relative 'db_config'
 require_relative 'models/user'
 require_relative 'models/quote'
@@ -28,6 +28,7 @@ get '/' do
   # @top_quotes.each do |data|
   #   counts[data.quote_id] += 1
   # end
+  # ^^ gives {13 => 2, 9 => 1, etc}
   # @top_quotes = Favourite.all.count{ |x| x.quote_id }
   erb :index
 end
@@ -41,12 +42,12 @@ end
 get '/profile' do
   redirect '/login' unless logged_in?
 
-  # @result = Quote.where(user_id: current_user.id)
+  @result = Quote.where(user_id: current_user.id)
 
-  conn = PG.connect(dbname: 'quote_app')
-  sql_uploaded = "select id, user_id, category, author, content FROM quotes WHERE user_id = '#{current_user.id}';"
-  @result = conn.exec(sql_uploaded)
-  conn.close
+  # conn = PG.connect(dbname: 'quote_app')
+  # sql_uploaded = "select id, user_id, category, author, content FROM quotes WHERE user_id = '#{current_user.id}';"
+  # @result = conn.exec(sql_uploaded)
+  # conn.close
 
   @fav = Favourite.where(user_id: current_user.id)
   # binding.pry
