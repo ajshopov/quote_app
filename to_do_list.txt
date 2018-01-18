@@ -35,7 +35,8 @@ DONE- rework homepage, top quotes at top
 update readme
 Admin user can edit all
 
-DIFFICULTY- a remove button for search results
+DIFFICULTIES- a remove button for search results
+deleting quotes in the current top 5
 
 Optional:
 search icon inside main search bar

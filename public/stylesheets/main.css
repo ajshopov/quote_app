@@ -1,19 +1,22 @@
 body{
-  background: rgba(109, 143, 255, 0.1);
-  /*background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/1c/Quotation_Marks.svg");
-  background-repeat: repeat;*/
+  background-color: #88B5D6;
+  background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/19279-200.png");
+  background-repeat: repeat;
 }
 
-
 main {
-  width: 1000px;
+  width: 1050px;
   border: solid 3px black;
   margin: 0 auto;
 }
 
 header {
-  background: white;
+  background: rgb(198, 238, 246);
   border-bottom: 1px solid black;
+}
+
+nav {
+  background-color: #1A2739;
 }
 
 h1, h2 {
@@ -22,12 +25,29 @@ h1, h2 {
   text-align: center;
 }
 
-h2 {
-  margin-top: 15px;
-}
-
 caption {
   caption-side: top;
+}
+
+.login-details {
+  width: 200px;
+  margin: 15px auto;
+  text-align: center;
+}
+
+.new-user {
+  width: 200px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.login-box{
+  position: fixed;
+}
+
+.page{
+  background: white;
+  padding: 3px;
 }
 
 .search-form {
@@ -38,7 +58,16 @@ caption {
 #main-search {
   width: 400px;
   border: 2px solid black;
-  padding: 3px;
+  padding: 5px 5px 5px 30px;
+  transition: width 0.3s ease-out;
+  background-color: white;
+  background-image: url('https://www.visitsouthdevon.co.uk/images/searchButtons/btn_sitesearch@x2.png');
+  background-position: 5px 6px;
+  background-repeat: no-repeat;
+}
+
+#main-search:focus {
+  width: 700px;
 }
 
 #main-search-button {

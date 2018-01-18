@@ -17,7 +17,7 @@
         <a class="nav-item nav-link" href="/profile">Profile</a>
         <a class="nav-item nav-link" href="/about">About</a>
       </nav>
-
+      <div class="login-box">
         <% if logged_in? %>
           logged in as <%= current_user.username %>
           <form action="/session" method="post">
@@ -30,20 +30,22 @@
             <button>login/signup</button>
           </form>
         <% end %>
+      </div>
 
         <h1>- QuoteShare -</h1>
       <div class="search-form">
         <p>A platform to save and share your favourite quotes. Login to start voting.</p>
         <form action="/results" method="get">
-          <label for="">Search:</label>
           <input name="search" type="text" placeholder="category, text or author..." id="main-search">
           <button id="main-search-button">search</button>
         </form>
         <p><a href="/quote/new">or add your own</a></p>
       </div>
     </header>
-
-    <%= yield %>
+    
+    <div class="page">
+      <%= yield %>
+    </div>
 
   </main>
 </body>
