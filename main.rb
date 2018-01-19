@@ -1,6 +1,7 @@
 require 'sinatra'
 # require 'sinatra/reloader'
 require 'pry'
+# require 'byebug'
 # require 'pg'
 require_relative 'db_config'
 require_relative 'models/user'
@@ -21,23 +22,37 @@ end
 
 #  home
 get '/' do
-  @quotes = Quote.all.order(:id)
-
-  # favourites count
-  top_quotes = Favourite.all
-  count = Hash.new 0
-  top_quotes.each do |favourite|
-     count[favourite.quote_id] += 1
+  quotes_with_favs = []
+  @quotes = Quote.all.includes(:favourites)
+  @quotes.each do |quote|
+    quotes_with_favs.push({quote_id: quote.id, favs: quote.favourites.count})
   end
-  # ^^ gives {13 => 2, 9 => 1, etc}
-  @favs_array = count.sort_by{|k,v| v}
-  # binding.pry
+  @top_five = quotes_with_favs.max_by(5) {|quote| quote[:favs]}.map { |quote|
+    quote[:quote_id]
+  }
+  # @quotes_to_show = @quotes.where(id: @top_five)
+  @quotes_to_show = []
+  @top_five.each do |ordered_id|
+    @quotes_to_show.push(@quotes.where(id: ordered_id))
+  end
 
-  @pos1 = Quote.find(@favs_array[-1][0])
-  @pos2 = Quote.find(@favs_array[-2][0])
-  @pos3 = Quote.find(@favs_array[-3][0])
-  @pos4 = Quote.find(@favs_array[-4][0])
-  @pos5 = Quote.find(@favs_array[-5][0])
+
+  # binding.pry
+  # # favourites count
+  # top_quotes = Favourite.all
+  
+  # top_quotes.each do |favourite|
+  #    count[favourite.quote_id] += 1
+  # end
+  # # ^^ gives {13 => 2, 9 => 1, etc}
+  # @favs_array = count.sort_by{|k,v| v}
+  # # binding.pry
+
+  # @pos1 = Quote.find(@favs_array[-1][0])
+  # @pos2 = Quote.find(@favs_array[-2][0])
+  # @pos3 = Quote.find(@favs_array[-3][0])
+  # @pos4 = Quote.find(@favs_array[-4][0])
+  # @pos5 = Quote.find(@favs_array[-5][0])
   erb :index
 end
 
@@ -112,6 +127,7 @@ end
 delete '/quote/:id' do
   #  delete quote
   quote = Quote.find(params[:id])
+  quote.favourites.destroy_all
   quote.delete
   redirect '/profile'
 end
