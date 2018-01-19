@@ -32,8 +32,8 @@ DONE- widen and space main search box
 DONE- new/edit quote wider content box (textarea didn't input content)
 DONE- hello world header
 DONE- rework homepage, top quotes at top
-update readme
-Admin user can edit all
+DONE- update readme
+SKIP- Admin user can edit all
 
 DIFFICULTIES- 
 a remove button for search results
@@ -48,6 +48,7 @@ failed to login error
 auto login upon signup
 change category to tags - many-to-many
 comments?
+pages for search results
 
 
 List of files:
