@@ -35,11 +35,12 @@ DONE- rework homepage, top quotes at top
 update readme
 Admin user can edit all
 
-DIFFICULTIES- a remove button for search results
-deleting quotes in the current top 5
+DIFFICULTIES- 
+a remove button for search results
+DONE- deleting quotes in the current top 5
 
 Optional:
-search icon inside main search bar
+DONE- search icon inside main search bar
 Sort by author
 Sort by category (Quote.order(:category))
 Send/share quotes with other users
