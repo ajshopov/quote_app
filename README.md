@@ -1,11 +1,19 @@
-# Quote App
+# QuoteShare
 
-*under construction*
+QUOTESHARE - A platform to save and share your favourite book/film/inspirational quotes.
+Try it out [here](https://quoteshareapp.herokuapp.com/).
 
-2nd project for General Assembly Web-Dev course.
+### Brief
 
-### QUOTESHARE - A platform to save and share your favourite quotes
+General Assembly WDI Project 2. Using the Sinatra micro-framework, build a full-stack, database backed application of your choice.
 
-Allows you to create an account to save quotes to your favourites list or add your own quotes to your profile.
+### Solution
 
-[Link to site](https://quoteshareapp.herokuapp.com/)
+QuoteShare is CRUD application for users to store and share their favourite quotes.
+
+Users can search other members' quotes on QuoteShare by content, author or subject, upvote and save them to their personal Favourites list. Users can also add their own quotes to the platform.
+
+The Home Page also has a 'Top 5 Quotes' feature displaying the most popular quotes on the site.
+
+
+Techs used: Ruby, Sinatra, PostgreSQL, HMTL/CSS.

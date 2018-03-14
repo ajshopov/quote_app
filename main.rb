@@ -87,7 +87,9 @@ end
 # search quotes
 get '/results' do
   @search = params[:search]
-  @result = Quote.where("content ilike ?", "%#{@search}%").or(Quote.where("author ilike ?", "%#{@search}%").or(Quote.where("category ilike ?", "%#{@search}%")))
+
+  @result = Quote.where("content ilike ? or author ilike ? or category ilike ?", "%#{@search}%", "%#{@search}%", "%#{@search}%")
+  # .or(Quote.where("author ilike ?", "%#{@search}%").or(Quote.where("category ilike ?", "%#{@search}%")))
   if logged_in?
   @user_favs = Favourite.where(user_id: current_user.id)
   end

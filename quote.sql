@@ -25,6 +25,7 @@ CREATE TABLE favourites (
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE RESTRICT
 );
 
+
 -- CREATE TABLE shares (
 --   id serial primary key,
 --   from_user_id varchar(200),
