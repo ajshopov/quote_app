@@ -5,7 +5,8 @@ Try it out [here](https://quoteshareapp.herokuapp.com/).
 
 ### Brief
 
-General Assembly WDI Project 2. Using the Sinatra micro-framework, build a full-stack, database backed application of your choice.
+General Assembly WDI Project 2.
+Using the Sinatra micro-framework, build a full-stack, database backed application of your choice.
 
 ### Problem
 
